@@ -20,13 +20,15 @@
                 <div class="card-body">
                   <form role="form">
                     <div class="mb-3">
-                      <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                      <input type="text" class="form-control form-control-user" id="email" name="email" 
+                      placeholder="Masukkan alamat email">
                     </div>
                     <div class="mb-3">
-                      <input type="password" class="form-control form-control-lg" placeholder="Kata Sandi" aria-label="Password">
+                      <input type="password" class="form-control form-control-user" id="password" name="password" 
+                      placeholder="Masukkan kata sandi">
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
+                      <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Masuk</button>
                     </div>
                   </form>
                 </div>

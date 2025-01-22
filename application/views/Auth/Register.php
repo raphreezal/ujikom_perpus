@@ -43,18 +43,24 @@
             <div class="row px-xl-5 px-sm-4 px-3">
             </div>
             <div class="card-body">
-              <form role="form">
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Nama Pengguna" aria-label="Name">
+              <form class="user">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" name="name"placeholder="Nama lengkap Pengguna">
+                  <?= form_error('name');?>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="email" name="email" 
+                   placeholder="Masukkan alamat email">
+                   <?= form_error('email');?>
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                  <input type="password" class="form-control" id="password1" name="password1" placeholder="Buat Kata Sandi">
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Kata Sandi" aria-label="Password">
+                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Ulangi Kata Sandi" >
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Daftar Akun</button>
+                  <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Daftar Akun</button>
                 </div>
                 <p class="text-sm mt-3 mb-0">Sudah punya akun? <a href="<?php echo base_url('Auth/');?>" class="text-dark font-weight-bolder">Masuk Sekarang!</a></p>
               </form>
