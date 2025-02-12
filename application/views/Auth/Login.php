@@ -1,14 +1,9 @@
 <body>
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
-      <div class="col-12">
-        
-      </div>
+      <div class="col-12"></div>
     </div>
   </div>
-
-  <!-- Flash message for success/error -->
-  <?= $this->session->flashdata('message'); ?>
 
   <main class="main-content mt-0">
     <section>
@@ -20,7 +15,19 @@
                 <div class="card-header pb-0 text-start">
                   <h4 class="font-weight-bolder">Masuk Situs Perpustakaan</h4>
                   <p class="mb-0">Masukkan email dan kata sandi untuk masuk</p>
+                  <!-- Flash message for success/error -->
+                  <?php if ($this->session->flashdata('message')): ?>
+                      <?php 
+                          $message = $this->session->flashdata('message');
+                          // Tentukan class CSS berdasarkan pesan
+                          $messageClass = (strpos(strtolower($message), 'berhasil') !== false) ? 'alert-success' : 'alert-danger';
+                      ?>
+                      <div class="alert <?= $messageClass; ?> alert-dismissible fade show" role="alert">
+                          <?= $message; ?>
+                      </div>
+                  <?php endif; ?>
                 </div>
+                
                 <div class="card-body">
                   <form method="POST" action="<?= base_url('auth/'); ?>">
                     <!-- Email input field -->

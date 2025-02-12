@@ -25,7 +25,7 @@
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
+      <a class="navbar-brand m-0" href="#" target="_blank">
         <img src="<?php echo base_url('assets/');?>img/logo-web.png" width="26px" height="26px" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">RousseauReads</span>
       </a>
@@ -125,7 +125,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['name']; ?></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -326,7 +326,7 @@
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card z-index-2 h-100">
             <div class="card-header pb-0 pt-3 bg-transparent">
-              <h6 class="text-capitalize">Sales overview</h6>
+              <h6 class="text-capitalize">Tabel grafik pinjaman Bulanan</h6>
               <p class="text-sm mb-0">
                 <i class="fa fa-arrow-up text-success"></i>
                 <span class="font-weight-bold">4% more</span> in 2021
@@ -339,11 +339,11 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5">
+        <!-- <div class="col-lg-5">
           <div class="card card-carousel overflow-hidden h-100 p-0">
             <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
               <div class="carousel-inner border-radius-lg h-100">
-                <div class="carousel-item h-100 active" style="background-image: url('<?php echo base_url('assets/');?>img/carouto-1.jpg');
+                <div class="carousel-item h-100 active" style="background-image: url('?php echo base_url('assets/');?>img/carouto-1.jpg');
       background-size: cover;">
                   <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5" style="background-color: rgba(0, 0, 0, 0.45); padding: 15px;">
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -354,7 +354,7 @@
                   <a href="https://screenrant.com/naruto-masashi-kishimoto-boruto-return-reason-future/" style="color: yellow; font-weight: bold;" target="_blank">Cek selengkapnya...</a>
               </div>
                 </div>
-                <div class="carousel-item h-100" style="background-image: url('<?php echo base_url('assets/');?>img/carouhar-2.jpg');
+                <div class="carousel-item h-100" style="background-image: url('?php echo base_url('assets/');?>img/carouhar-2.jpg');
       background-size: cover;">
                   <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5" style="background-color: rgba(0, 0, 0, 0.45); padding: 15px;">
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -365,7 +365,7 @@
                   <a href="https://www.cracked.com/article_44469_jk-rowling-waits-until-last-week-tonight-goes-on-hiatus-to-start-a-beef-with-john-oliver.html" style="color: yellow; font-weight: bold;" target="_blank">Cek selengkapnya...</a>
               </div>
                 </div>
-                <div class="carousel-item h-100" style="background-image: url('<?php echo base_url('assets/');?>img/carousel-3.jpg');
+                <div class="carousel-item h-100" style="background-image: url('?php echo base_url('assets/');?>img/carousel-3.jpg');
       background-size: cover;">
                   <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -386,14 +386,14 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card ">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-2">Sales by Country</h6>
+                <h6 class="mb-2">Peringkat Kategori Buku pinjaman.</h6>
               </div>
             </div>
             <div class="table-responsive">
@@ -406,7 +406,7 @@
                           <img src="<?php echo base_url('assets/');?>img/icons/flags/US.png" alt="Country flag">
                         </div>
                         <div class="ms-4">
-                          <p class="text-xs font-weight-bold mb-0">Country:</p>
+                          <p class="text-xs font-weight-bold mb-0">Kategori</p>
                           <h6 class="text-sm mb-0">United States</h6>
                         </div>
                       </div>
@@ -437,7 +437,7 @@
                           <img src="<?php echo base_url('assets/');?>img/icons/flags/DE.png" alt="Country flag">
                         </div>
                         <div class="ms-4">
-                          <p class="text-xs font-weight-bold mb-0">Country:</p>
+                          <p class="text-xs font-weight-bold mb-0">Kategori</p>
                           <h6 class="text-sm mb-0">Germany</h6>
                         </div>
                       </div>
@@ -468,7 +468,7 @@
                           <img src="<?php echo base_url('assets/');?>img/icons/flags/GB.png" alt="Country flag">
                         </div>
                         <div class="ms-4">
-                          <p class="text-xs font-weight-bold mb-0">Country:</p>
+                          <p class="text-xs font-weight-bold mb-0">Kategori</p>
                           <h6 class="text-sm mb-0">Great Britain</h6>
                         </div>
                       </div>
@@ -499,7 +499,7 @@
                           <img src="<?php echo base_url('assets/');?>img/icons/flags/BR.png" alt="Country flag">
                         </div>
                         <div class="ms-4">
-                          <p class="text-xs font-weight-bold mb-0">Country:</p>
+                          <p class="text-xs font-weight-bold mb-0">Kategori</p>
                           <h6 class="text-sm mb-0">Brasil</h6>
                         </div>
                       </div>
@@ -607,22 +607,6 @@
                 made by
                 <a href="https://instagram.com/raphreezal/" class="font-weight-bold" target="_blank">Raphreezal</a>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

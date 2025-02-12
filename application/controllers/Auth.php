@@ -25,39 +25,46 @@ class Auth extends CI_Controller {
             $this->load->view('Auth/Login');
             $this->load->view('Templates/Auth_footer');
         } else {
-            // Get email and password from POST data
-            $email = htmlspecialchars($this->input->post('email', true));
-            $password = $this->input->post('password');
+            // Call the private _login function for processing login
+            $this->_login();
+        }
+    }
 
-            // Check if the email exists in the database
-            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
+    // Private function to handle login logic
+    private function _login()
+    {
+        // Get email and password from POST data
+        $email = htmlspecialchars($this->input->post('email', true));
+        $password = $this->input->post('password');
 
-            // If user exists and password is correct
-            if ($user) {
-                // Verify password
-                if (password_verify($password, $user['password'])) {
-                    // Password is correct, create session data
-                    $data = [
-                        'email' => $user['email'],
-                        'role_id' => $user['role_id'],
-                        'name' => $user['name'],
-                        'is_logged_in' => true
-                    ];
+        // Check if the email exists in the database
+        $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
 
-                    $this->session->set_userdata($data);
+        // If user exists and password is correct
+        if ($user) {
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, create session data
+                $data = [
+                    'email' => $user['email'],
+                    'role_id' => $user['role_id'],
+                    'name' => $user['name'],
+                    'is_logged_in' => true
+                ];
 
-                    // Redirect to dashboard or home page after successful login
-                    redirect('user/index'); // Adjust 'dashboard' route as per your app structure
-                } else {
-                    // Incorrect password
-                    $this->session->set_flashdata('message', 'Password salah!');
-                    redirect('auth'); // Redirect to login page if password is incorrect
-                }
+                $this->session->set_userdata($data);
+
+                // Redirect to dashboard or home page after successful login
+                redirect('user/index'); // Adjust 'dashboard' route as per your app structure
             } else {
-                // User not found or inactive
-                $this->session->set_flashdata('message', 'Email tidak terdaftar atau akun tidak aktif!');
-                redirect('auth'); // Redirect to login page if user is not found
+                // Incorrect password
+                $this->session->set_flashdata('message', 'Password salah!');
+                redirect('auth'); // Redirect to login page if password is incorrect
             }
+        } else {
+            // User not found or inactive
+            $this->session->set_flashdata('message', 'Email tidak terdaftar atau akun tidak aktif!');
+            redirect('auth'); // Redirect to login page if user is not found
         }
     }
 
