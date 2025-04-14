@@ -7,8 +7,8 @@
                         document.write(new Date().getFullYear())
                     </script>,
                     made with <i class="fa fa-heart text-danger"></i> by
-                    <a href="https://www.creative-tim.com" class="font-weight-bold text-decoration-none text-dark" target="_blank">Creative Tim</a>
-                    | Customized for <span class="fw-bold">Open Library UI</span>.
+                    <a href="https://www.instagram.com/theseaints.jpg/" class="font-weight-bold text-decoration-none text-dark" target="_blank">TheseaintDesign</a>
+                    | Customized for <span class="fw-bold">Libra UI</span>.
                 </div>
             </div>
             <div class="col-lg-6">

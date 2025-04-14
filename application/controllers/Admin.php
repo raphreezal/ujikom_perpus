@@ -21,13 +21,24 @@ class Admin extends CI_Controller {
 
     public function dashmin() {
         $data['title'] = 'Admin Dashboard';
-
-        // Contoh load halaman dashboard admin
+    
+        // Ambil jumlah buku dari tabel 'buku'
+        $data['total_buku'] = $this->db->count_all('buku');
+    
+        // Ambil jumlah user dari tabel 'user'
+        $data['total_user'] = $this->db->count_all('user');
+    
+        // Ambil 5 pengguna terbaru berdasarkan kolom 'date_created'
+        $this->db->order_by('date_created', 'DESC');
+        $data['pengguna_baru'] = $this->db->get('user', 5)->result();
+    
+        // Load view dashboard
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('admin/dashmin', $data);
         $this->load->view('templates/footer');
     }
+    
 
     public function form_tambah_buku() {
         $data['title'] = 'Tambah Buku';
@@ -84,7 +95,7 @@ class Admin extends CI_Controller {
 
         $this->db->insert('buku', $data);
 
-        // Redirect ke halaman dashboard buku atau list buku
+        // Redirect ke halaman dashboard
         redirect('admin/dashmin');
     }
 }

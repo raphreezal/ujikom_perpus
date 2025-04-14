@@ -34,11 +34,11 @@
         <!-- Search -->
         <form class="d-flex align-items-center me-3">
           <select class="form-select form-select-sm me-2" style="max-width: 80px;">
-            <option selected>All</option>
-            <option>Books</option>
-            <option>Authors</option>
+            <option selected>Keseluruhan</option>
+            <option>Buku</option>
+            <option>Penulis</option>
           </select>
-          <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Cari" aria-label="Search">
           <button class="btn btn-outline-secondary btn-sm" type="submit">
             <i class="fas fa-search"></i>
           </button>
@@ -66,7 +66,7 @@
   <div class="container mt-4">
     <h1>Selamat datang di opera van java</h1>
     <div class="container mt-4">
-      <h1>Trending Books</h1>
+      <h2>Baca Gratis Buku Online</h2>
       <div class="row">
         <div class="row" id="trending-books">
 
