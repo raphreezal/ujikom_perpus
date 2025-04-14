@@ -1,8 +1,7 @@
 <body class="">
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
-            <div class="col-12">
-            </div>
+            <div class="col-12"></div>
         </div>
     </div>
     <main class="main-content mt-0">
@@ -13,8 +12,8 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Masuk Situs Perpustakaan</h4>
-                                    <p class="mb-0">Masukkan email dan kata sandi untuk masuk</p>
+                                    <h4 class="font-weight-bolder">Halaman masuk situs perpustakaan</h4>
+                                    <p class="mb-0">Masukkan email dan kata sandi untuk masuk halaman dasbor</p>
                                 </div>
                                 <div class="card-body">
                                     <?php echo $this->session->flashdata('message'); ?>
@@ -23,8 +22,12 @@
                                             <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan alamat email" value="<?php echo set_value('email'); ?>">
                                             <?php echo form_error('email', '<small class="text-danger">', '</small>'); ?>
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- Password dengan tombol eye -->
+                                        <div class="mb-3 position-relative">
                                             <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan kata sandi">
+                                            <i class="fa fa-eye toggle-password"
+                                               toggle="#password"
+                                               style="position:absolute; top:50%; right:10px; transform:translateY(-50%); cursor:pointer;"></i>
                                             <?php echo form_error('password', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         <div class="text-center">

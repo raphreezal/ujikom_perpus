@@ -64,20 +64,7 @@
 
   <!-- Your page content starts here -->
   <div class="container mt-4">
-    <h1>Selamat datang di opera van java</h1>
-    <div class="container mt-4">
-      <h1>Trending Books</h1>
-      <div class="row">
-        <div class="row" id="trending-books">
-
-          <!-- Buku dari API akan ditampilkan di sini -->
-        </div>
-        <div class="d-flex justify-content-center mt-4">
-          <button id="prevBtn" class="btn btn-outline-primary me-2" disabled>Previous</button>
-          <span id="pageIndicator" class="align-self-center">Page 1</span>
-          <button id="nextBtn" class="btn btn-outline-primary ms-2">Next</button>
-        </div>
-
-      </div>
-    </div>
+    <h1>Selamat datang di Open Library versi kamu</h1>
+    <p>Tambahkan konten di sini...</p>
+  </div>
 </main>

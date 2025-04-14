@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->database();
         $this->load->library('session');
-        $this->load->helper('url'); // Memuat URL helper
+        $this->load->helper('url');
     }
 
     public function index() {
@@ -17,8 +17,13 @@ class Auth extends CI_Controller {
     }
 
     public function login() {
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Email harus diisi!',
+            'valid_email' => 'Email tidak valid!'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim', [
+            'required' => 'Kata sandi harus diisi!'
+        ]);
     
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Halaman Masuk Pengguna';
@@ -39,7 +44,12 @@ class Auth extends CI_Controller {
                     $this->session->set_userdata('role_id', $user['role_id']);
                     $this->session->set_userdata('is_active', $user['is_active']);
     
-                    redirect('Libra/index'); // Pastikan ini benar
+                    // Redirect berdasarkan role_id
+                    if ($user['role_id'] == 1) {
+                        redirect('Admin/dashmin');
+                    } else {
+                        redirect('Libra/index');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
                     redirect('auth');
@@ -50,17 +60,27 @@ class Auth extends CI_Controller {
             }
         }
     }
+    
 
     public function register() {
-        $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim',[
+            'required' => 'Nama harus diisi!'
+        ]);
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'Email ini sudah terdaftar!'
+            'is_unique' => 'Email ini sudah terdaftar!',
+            'required' => 'Email harus diisi!',
+            'valid_email' => 'Email tidak valid!'
         ]);
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
-            'matches' => 'Password tidak sama!',
-            'min_length' => 'Password minimal 6 karakter!'
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|max_length[20]|matches[password2]', [
+            'matches' => 'Kata sandi tidak sama!',
+            'required' => 'Kata sandi harus diisi!',
+            'min_length' => 'Kata sandi minimal 6 karakter!',
+            'max_length' => 'Kata sandi maksimal 20 karakter!'
         ]);
-        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'required|trim|matches[password1]',[
+            'required' => 'Konfirmasi Kata Sandi harus diisi!',
+            'matches' => 'Kata sandi tidak sama!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Halaman Registrasi Pengguna';
@@ -81,5 +101,15 @@ class Auth extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat. Silakan login!</div>');
             redirect('auth');
         }
+    }
+
+    public function logout() {
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('name');
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('is_active');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda telah logout!</div>');
+        redirect('auth');
     }
 }

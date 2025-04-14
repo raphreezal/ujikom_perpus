@@ -21,6 +21,23 @@
   <script src="<?php echo base_url('assets/');?>/js/core/bootstrap.min.js"></script>
   <script src="<?php echo base_url('assets/');?>/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="<?php echo base_url('assets/');?>/js/plugins/smooth-scrollbar.min.js"></script>
+   <!-- Toggle Password Script -->
+   <script>
+        document.querySelectorAll('.toggle-password').forEach(function (icon) {
+            icon.addEventListener('click', function () {
+                const input = document.querySelector(icon.getAttribute('toggle'));
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+    </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
