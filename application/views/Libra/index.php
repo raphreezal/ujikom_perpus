@@ -51,10 +51,7 @@
         <!-- Login & Sign Up -->
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item me-2">
-            <a class="nav-link" href="#">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary btn-sm" href="#">Sign Up</a>
+            <a class="nav-link"><?php echo $_SESSION ['name']?></a>
           </li>
         </ul>
       </div>
@@ -63,8 +60,6 @@
   <!-- End Navbar -->
 
   <!-- Your page content starts here -->
-  <div class="container mt-4">
-    <h1>Selamat datang di opera van java</h1>
     <div class="container mt-4">
       <h2>Baca Gratis Buku Online</h2>
       <div class="row">

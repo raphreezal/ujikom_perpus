@@ -36,7 +36,7 @@ class Libra extends CI_Controller
         // Template utama
         $this->load->view('templates/header', $data);      // Head, open body, topbar
         $this->load->view('templates/sidebar');            // Sidebar navigasi
-        $this->load->view('libra/index', $data);           // Isi konten utama
+        $this->load->view('libra/bacaonline', $data);           // Isi konten utama
         $this->load->view('templates/footer');             // Footer + JS + Close tag
     }
 }
