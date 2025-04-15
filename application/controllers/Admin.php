@@ -21,68 +21,79 @@ class Admin extends CI_Controller {
 
     public function dashmin() {
         $data['title'] = 'Admin Dashboard';
-    
-        // Ambil jumlah buku dari tabel 'buku'
         $data['total_buku'] = $this->db->count_all('buku');
-    
-        // Ambil jumlah user dari tabel 'user'
         $data['total_user'] = $this->db->count_all('user');
-    
-        // Ambil 5 pengguna terbaru berdasarkan kolom 'date_created'
+
         $this->db->order_by('date_created', 'DESC');
         $data['pengguna_baru'] = $this->db->get('user', 5)->result();
-    
-        // Load view dashboard
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/adm_side');
         $this->load->view('admin/dashmin', $data);
         $this->load->view('templates/footer');
     }
-    
 
     public function tambah_buku() {
         $data['title'] = 'Tambah Buku';
-    
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('admin/tambah_buku', $data);
         $this->load->view('templates/footer');
     }
-    
+
     public function post_buku() {
-        $judul = $this->input->post('judul');
-        $slug = $this->input->post('slug');
+        $judul     = $this->input->post('judul');
+        $slug      = $this->input->post('slug');
         $deskripsi = $this->input->post('deskripsi');
-    
-        // Upload Cover
-        $config['upload_path'] = base_url() . "uploads/";
+
+        // Pastikan folder uploads/cover tersedia
+        $upload_folder = realpath(APPPATH . '../uploads/cover');
+        if (!$upload_folder || !is_dir($upload_folder)) {
+            show_error("Folder upload tidak ditemukan atau tidak valid: $upload_folder", 500);
+            return;
+        }
+
+        // Konfigurasi upload
+        $config['upload_path']   = $upload_folder;
         $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['file_name'] = time() . '_cover';
-        $config['overwrite'] = true;
-    
-        $this->load->library('upload', $config);
-    
+        $config['file_name']     = time() . '_cover';
+        $config['overwrite']     = true;
+
+        $this->upload->initialize($config);
+
         if (!$this->upload->do_upload('cover')) {
             $error = $this->upload->display_errors();
             show_error("Gagal upload cover: $error", 500);
             return;
         }
-    
-        $cover = $this->upload->data('file_name');
-    
+
+        $upload_data = $this->upload->data();
+        $cover = $upload_data['file_name'];
+
         // Simpan ke database
         $data = [
-            'judul'     => $judul,
-            'writer'    => '', // Kalau kamu pakai input writer, sesuaikan ini
-            'detail'    => $deskripsi, // karena kolomnya `detail` di DB
-            'cover'     => $cover
+            'judul'  => $judul,
+            'slug'   => $slug,
+            'detail' => $deskripsi,
+            'cover'  => $cover,
+            'writer' => '',
         ];
-    
+
         $this->db->insert('buku', $data);
-    
-        // Redirect ke dashboard
         redirect('admin/dashmin');
     }
+
+    public function daftar_buku() {
+        $data['title'] = 'Daftar Buku';
     
+        // Ambil semua data buku dari tabel
+        $data['buku'] = $this->db->get('buku')->result();
+    
+        // Load view
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('admin/daftar_buku', $data);
+        $this->load->view('templates/footer');
+    }
     
 }

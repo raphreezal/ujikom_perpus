@@ -72,7 +72,14 @@
   </div>
   <div class="card-body">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">📚 Buku "Pemrograman Web" baru saja ditambahkan.</li>
+      
+      <?php if (!empty($buku_terakhir)): ?>
+        <li class="list-group-item">
+          📚 Buku terbaru ditambahkan: <strong><?= htmlspecialchars($buku_terakhir->judul) ?></strong>
+        </li>
+      <?php else: ?>
+        <li class="list-group-item">📚 Belum ada buku yang ditambahkan.</li>
+      <?php endif; ?>
 
       <?php if (!empty($pengguna_baru)): ?>
         <?php foreach ($pengguna_baru as $pengguna): ?>
