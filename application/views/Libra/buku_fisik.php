@@ -39,4 +39,3 @@
       </div>
     <?php endif; ?>
   </div>
-</main>

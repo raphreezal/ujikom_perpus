@@ -51,7 +51,7 @@
         <!-- Login & Sign Up -->
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item me-2">
-            <a class="nav-link"><?php echo $_SESSION ['name']?></a>
+            <a class="nav-link"><?php echo $_SESSION ['username']?></a>
           </li>
         </ul>
       </div>

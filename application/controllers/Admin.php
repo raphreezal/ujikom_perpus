@@ -33,6 +33,24 @@ class Admin extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function daftar_peminjaman() {
+        $data['title'] = 'Daftar Peminjaman Buku';
+        $data['pinjaman'] = $this->db->get('peminjaman')->result_array(); // kalau kamu simpan datanya di tabel 'peminjaman'
+
+        $this->db->select('peminjaman.*, user.username, buku.judul');
+        $this->db->from('peminjaman');
+        $this->db->join('user', 'user.id = peminjaman.id_user');
+        $this->db->join('buku', 'buku.id_buku = peminjaman.id_buku');
+        $this->db->order_by('peminjaman.tanggal_pinjam', 'DESC');
+        $data['ajuan'] = $this->db->get()->result();
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/adm_side');
+        $this->load->view('admin/daftar_peminjaman', $data); // ini penting!
+        $this->load->view('templates/footer');
+    }
+    
+
     public function daftar_buku() {
         $data['title'] = 'Manajemen Buku';
         $data['buku']  = $this->db->get('buku')->result();

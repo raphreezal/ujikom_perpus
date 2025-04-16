@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
@@ -21,24 +22,25 @@
                         </div>
                         <div class="card-body">
                             <?= $this->session->flashdata('message'); ?>
-                            <form class="user" method="post" action="<?= base_url('auth/register'); ?>">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Nama lengkap Pengguna" value="<?= set_value('name'); ?>"
-                                        aria-label="Nama lengkap">
-                                    <?= form_error('name', '<small class="text-danger pl-3" style="font-size:0.75rem">', '</small>'); ?>
+
+                            <?= form_open('auth/register'); ?>
+
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        placeholder="Nama lengkap Pengguna" value="<?= set_value('username'); ?>">
+                                    <?= form_error('username', '<small class="text-danger pl-3" style="font-size:0.75rem">', '</small>'); ?>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="email" name="email"
-                                        placeholder="Masukkan alamat email" value="<?= set_value('email'); ?>"
-                                        aria-label="Email">
+
+                                <div class="form-group mb-3">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Masukkan alamat email" value="<?= set_value('email'); ?>">
                                     <?= form_error('email', '<small class="text-danger pl-3" style="font-size:0.75rem">', '</small>'); ?>
                                 </div>
 
                                 <!-- Password 1 -->
                                 <div class="mb-3 position-relative">
                                     <input type="password" class="form-control" id="password1" name="password1"
-                                        placeholder="Buat Kata Sandi" aria-label="Kata Sandi">
+                                        placeholder="Buat Kata Sandi">
                                     <i class="fa fa-eye toggle-password"
                                         toggle="#password1"
                                         style="position:absolute; top:50%; right:10px; transform:translateY(-50%); cursor:pointer;"></i>
@@ -48,7 +50,7 @@
                                 <!-- Password 2 -->
                                 <div class="mb-3 position-relative">
                                     <input type="password" class="form-control" id="password2" name="password2"
-                                        placeholder="Ulangi Kata Sandi" aria-label="Ulangi Kata Sandi">
+                                        placeholder="Ulangi Kata Sandi">
                                     <i class="fa fa-eye toggle-password"
                                         toggle="#password2"
                                         style="position:absolute; top:50%; right:10px; transform:translateY(-50%); cursor:pointer;"></i>
@@ -58,9 +60,12 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Daftar Akun</button>
                                 </div>
-                                <p class="text-sm mt-3 mb-0">Sudah punya akun? <a href="<?= base_url('auth'); ?>"
-                                        class="text-dark font-weight-bolder">Masuk Sekarang!</a></p>
-                            </form>
+
+                                <p class="text-sm mt-3 mb-0">Sudah punya akun? 
+                                    <a href="<?= base_url('auth'); ?>" class="text-dark font-weight-bolder">Masuk Sekarang!</a>
+                                </p>
+
+                            <?= form_close(); ?>
                         </div>
                     </div>
                 </div>

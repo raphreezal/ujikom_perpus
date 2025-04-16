@@ -39,7 +39,7 @@ class Auth extends CI_Controller {
             if ($user) {
                 if (password_verify($password, $user['password'])) {
                     $this->session->set_userdata('user_id', $user['id']);
-                    $this->session->set_userdata('name', $user['name']);
+                    $this->session->set_userdata('username', $user['username']);
                     $this->session->set_userdata('email', $user['email']);
                     $this->session->set_userdata('role_id', $user['role_id']);
                     $this->session->set_userdata('is_active', $user['is_active']);
@@ -60,10 +60,9 @@ class Auth extends CI_Controller {
             }
         }
     }
-    
 
     public function register() {
-        $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim',[
+        $this->form_validation->set_rules('username', 'Nama Lengkap', 'required|trim',[
             'required' => 'Nama harus diisi!'
         ]);
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -89,7 +88,7 @@ class Auth extends CI_Controller {
             $this->load->view('Templates/Auth_footer');
         } else {
             $data = [
-                'name' => htmlspecialchars($this->input->post('name', true)),
+                'username' => htmlspecialchars($this->input->post('username', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
@@ -105,7 +104,7 @@ class Auth extends CI_Controller {
 
     public function logout() {
         $this->session->unset_userdata('user_id');
-        $this->session->unset_userdata('name');
+        $this->session->unset_userdata('username');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->unset_userdata('is_active');

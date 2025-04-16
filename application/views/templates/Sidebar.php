@@ -36,7 +36,7 @@
       <?php else: ?>
         <!-- User: Baca Buku -->
         <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'baca') ? 'active' : '' ?>" href="<?= base_url('libra/bacaonline'); ?>">
+          <a class="nav-link <?= ($this->uri->segment(1) == 'baca') ? 'active' : '' ?>" href="<?= base_url('libra/index'); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-book-bookmark text-dark text-sm opacity-10"></i>
             </div>
@@ -46,7 +46,7 @@
 
         <!-- User: Buku Favorit -->
         <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'favorit') ? 'active' : '' ?>" href="<?= base_url('admin/form_tambah_buku'); ?>">
+          <a class="nav-link <?= ($this->uri->segment(1) == 'favorit') ? 'active' : '' ?>" href="<?= base_url('libra/buku_fisik'); ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-like-2 text-dark text-sm opacity-10"></i>
             </div>

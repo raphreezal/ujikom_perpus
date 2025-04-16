@@ -70,7 +70,6 @@
             </div>
         </div>
     </div>
-</main>
 
 <!-- JS untuk isi form saat klik Edit -->
 <script>

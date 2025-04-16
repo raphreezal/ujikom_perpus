@@ -14,7 +14,7 @@
 
       <!-- Dashboard -->
       <li class="nav-item">
-        <a class="nav-link <?= ($this->uri->segment(1) == 'libra') ? 'active' : '' ?>" href="<?= base_url('libra'); ?>">
+        <a class="nav-link <?= ($this->uri->segment(1) == 'libra') ? 'active' : '' ?>" href="<?= base_url('admin/dashmin'); ?>">
           <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
             <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
           </div>
@@ -39,6 +39,16 @@
             <i class="ni ni-circle-08 text-dark text-sm opacity-10"></i>
           </div>
           <span class="nav-link-text ms-1">Kelola Pengguna</span>
+        </a>
+      </li>
+      
+      <!-- Kelola Pengguna -->
+      <li class="nav-item">
+        <a class="nav-link <?= ($this->uri->segment(1) == 'user') ? 'active' : '' ?>" href="<?= base_url('admin/daftar_peminjaman'); ?>">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-circle-08 text-dark text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Daftar Ajuan</span>
         </a>
       </li>
 
