@@ -39,4 +39,15 @@ class Libra extends CI_Controller
         $this->load->view('libra/bacaonline', $data);           // Isi konten utama
         $this->load->view('templates/footer');             // Footer + JS + Close tag
     }
+
+    // ========== HALAMAN BUKU PERPUS ==========
+    public function buku_fisik() {
+        $data['title'] = 'Katalog Buku Perpustakaan';
+        $data['buku'] = $this->db->get('buku')->result();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar'); // Atau 'adm_side' jika khusus admin
+        $this->load->view('libra/buku_fisik', $data);
+        $this->load->view('templates/footer');
+    }
 }

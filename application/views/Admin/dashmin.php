@@ -84,7 +84,7 @@
       <?php if (!empty($pengguna_baru)): ?>
         <?php foreach ($pengguna_baru as $pengguna): ?>
           <li class="list-group-item">
-            👤 Pengguna baru <strong><?= htmlspecialchars($pengguna->name) ?></strong> telah mendaftar pada <em><?= date('d M Y', strtotime($pengguna->date_created)) ?></em>.
+            👤 Pengguna baru <strong><?= htmlspecialchars($pengguna->username) ?></strong> telah mendaftar pada <em><?= date('d M Y', strtotime($pengguna->date_created)) ?></em>.
           </li>
         <?php endforeach; ?>
       <?php else: ?>

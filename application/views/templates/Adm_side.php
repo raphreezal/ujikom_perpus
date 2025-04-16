@@ -22,58 +22,25 @@
         </a>
       </li>
 
-      <?php if ($this->session->userdata('role') == 'admin'): ?>
-        <!-- Admin: Kelola Buku -->
-        <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'buku') ? 'active' : '' ?>" href="<?= base_url('buku'); ?>">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-books text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Kelola Buku</span>
-          </a>
-        </li>
+      <!-- Kelola Buku -->
+      <li class="nav-item">
+        <a class="nav-link <?= ($this->uri->segment(1) == 'buku') ? 'active' : '' ?>" href="<?= base_url('admin/daftar_buku'); ?>">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-books text-dark text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Kelola Buku</span>
+        </a>
+      </li>
 
-        <!-- Admin: Kelola Pengguna -->
-        <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'user') ? 'active' : '' ?>" href="<?= base_url('user'); ?>">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-circle-08 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Kelola Pengguna</span>
-          </a>
-        </li>
-
-      <?php else: ?>
-        <!-- User: Baca Buku -->
-        <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'baca') ? 'active' : '' ?>" href="<?= base_url('libra/bacaonline'); ?>">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-book-bookmark text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Baca Buku</span>
-          </a>
-        </li>
-
-        <!-- User: Buku Favorit -->
-        <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'favorit') ? 'active' : '' ?>" href="<?= base_url('admin/tambah_buku'); ?>">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-like-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Buku Favorit</span>
-          </a>
-        </li>
-
-        <!-- User: Riwayat Baca -->
-        <li class="nav-item">
-          <a class="nav-link <?= ($this->uri->segment(1) == 'riwayat') ? 'active' : '' ?>" href="<?= base_url('riwayat'); ?>">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-time-alarm text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Riwayat Baca</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <!-- Kelola Pengguna -->
+      <li class="nav-item">
+        <a class="nav-link <?= ($this->uri->segment(1) == 'user') ? 'active' : '' ?>" href="<?= base_url('admin/daftar_user'); ?>">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-circle-08 text-dark text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Kelola Pengguna</span>
+        </a>
+      </li>
 
       <!-- Logout Section -->
       <li class="nav-item mt-3">
